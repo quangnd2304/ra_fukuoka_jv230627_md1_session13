@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đối tượng</title>
+</head>
+
+<body>
+    <script>
+        // Khởi tạo đối tượng
+        /*
+            Khởi tạo đối tượng sinh viên gồm
+            - Các đặc điểm: mã sinh viên, tên sinh viên, tuổi, địa chỉ, giới tính
+            - Các hành vi: học, yêu
+        */
+        //1. Object Literal
+        let student1 = {
+            //Các đặc điểm Key:Value
+            studentId: "SV001",
+            studentName: "Nguyễn Văn A",
+            age: 20,
+            address: "Hà Nội",
+            sex: true,
+            //Các hành vi: Key:Value(function)
+            study: function () {
+                console.log("Sinh viên đang học");
+            },
+            love: function () {
+                console.log("Sinh viên đang yêu");
+            }
+        }
+        console.log("Sinh viên 1:", student1);
+        //2. Object Constructor
+        function student(studentId, studentName, age, address, sex) {
+            //Khởi tạo thuộc tính studentId của đối tượng
+            //this.studentId: khai báo thuộc tính studentId của đối tượng
+            //studentId: đối số truyền vào
+            this.studentId = studentId;
+            //Khởi tạo thuộc tính studentName
+            this.studentName = studentName;
+            this.age = age;
+            this.address = address;
+            this.sex = sex;
+            //Khởi tạo hành vi học
+            this.study = function () {
+                console.log("Sinh viên 2 đang học");
+            }
+            //Khởi tạo hành vi yêu
+            this.love = function () {
+                console.log("Sinh viên 2 đang yêu");
+            }
+        }
+        let student2 = new student("SV002", "Nguyễn Văn B", 22, "Đà Nẵng", false);
+        console.log("Thông tin sinh viên 2:", student2);
+        //3.Object Class
+        let student3 = new Object();
+        //CRUD - create - read - update - delete các thuộc tính và phương thức
+        //Thêm các đặc điểm mã sinh viên, tên sinh viên, tuổi, địa chỉ, giới tính cho sinh viên 3
+        student3.studentId = "SV003";
+        student3.studentName = "Nguyễn Văn C";
+        student3.age = 24;
+        student3.address = "HCM";
+        student3.sex = true;
+        //Thêm các hành vi học và yêu cho sinh viên 3
+        student3.study = function () {
+            console.log("Sinh viên 3 đang học");
+        }
+        student3.love = function () {
+            console.log("Khánh Linh bị ế");
+        }
+        //Xóa hành vi love của sinh viên 3
+        delete student3.love;
+
+        console.log("Thông tin sinh viên 3:", student3);
+
+        //4.Class
+        class Student {
+            //Hàm tạo giúp khởi tạo đối tượng - duy nhất 1 constructor
+            constructor(studentId, studentName, age, address, sex) {
+                this.studentId = studentId;
+                this.studentName = studentName;
+                this.age = age;
+                this.address = address;
+                this.sex = sex;
+            }
+            //Hành vi của đối tượng
+            study() {
+                console.log("Sinh viên 4 đang học");
+            }
+            love() {
+                console.log("Sinh viên 4 đang yêu");
+            }
+        }
+        let student4 = new Student("SV004", "Nguyễn Văn D", 25, "Fukuoka", true);
+        //Cập nhật thuộc tinh tên sinh viên của sinh viên 4 thành Nguyễn Khánh Linh
+        student4.studentName = "Nguyễn Khánh Linh";
+        //Xóa thuộc tính giới tính của sinh viên 4
+        delete student4.sex;
+        console.log("Thông tin sinh viên 4:", student4);
+        //Truy cập vào thuộc tính và hành vi của đối tượng - read
+        //In ra mã sinh viên của student1 và tên sinh viên của student2
+        console.log("Mã sinh viên 1:", student1.studentId);
+        console.log("Tên sinh viên 2:", student2.studentName);
+        //In ra mã sinh viên của student4
+        console.log("Mã sinh viên 4:", student4["studentId"]);
+        //Thực hiện hành vi học của sinh viên 1
+        student1.study();
+        //Thực hiện hành vi yêu của sinh viên 4
+        student4.love();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+
+<body>
+    <script>
+        //Hàm không có tham số
+        function hello() {
+            console.log("Xin chào các bạn");
+            //Không trả về kết quả
+        }
+        //Gọi hàm
+        console.log("Giá trị trả về của hàm hello:", hello());
+
+        console.log("Giá trị trả về của hàm add:", add(5, 7));
+
+        function add(number1, number2) {
+            number1++;
+            number2--;
+            let sum = number1 + number2;
+            return sum;
+        }
+
+        //Tham trị - truyền đối số có kiểu dữ liệu là primitive
+        let a = 10;
+        let b = 15;
+        let sum = add(a, b);
+        console.log("Giá trị sau khi gọi hàm - a:", a, " - b:", b);
+        //Tham chiếu - truyền đối số có kiểu dữ liệu là non_primitive
+        function sumArray(arr) {
+            let total = 0;
+            for (let i = 0; i < arr.length; i++) {
+                total += arr[i];
+            }
+            arr[0] = 100;
+            return total;
+        }
+        let arrInt = [2, 4, 6, 8];
+        let sumArr = sumArray(arrInt);
+        console.log("Mảng sau khi thực hiện gọi hàm:", arrInt);
+
+        //NaN: kiểu dữ liệu
+        //isNaN(): hàm kiểm tra giá trị có phải là số hay không
+
+        //Hàm tính tổng các số
+        //...numbers: là mảng gồm các phần tử
+        function addNumber(number1, number2, ...numbers) {
+            let total = number1 + number2;
+            for (let i = 0; i < numbers.length; i++) {
+                total += numbers[i];
+            }
+            return total;
+        }
+        console.log("Tổng 2 số:", addNumber(1, 2));
+        console.log("Tổng 3 số:", addNumber(1, 2, 3));
+        console.log("Tổng 4 số:", addNumber(1, 2, 3, 4));
+        //arguments: đối tượng javascript - mảng - đại diện cho tất cả các tham số của hàm
+        function addNumber2() {
+            let total = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                total += arguments[i];
+            }
+            return total;
+        }
+        console.log("Tổng 5 số là: ", addNumber2(1, 2, 3, 4, 5));
+        //Callback function
+        function functionA() {
+            console.log("Gọi API và nhận về kết quả");
+        }
+        function functionB(param1) {
+            param1();
+            console.log("Nhận kết quả và xử lý tiếp");
+        }
+        //Kết quả: functionA thực hiện xong và nhận kết quả sau đó mới thực tiếp các công việc của functionB
+        //Gọi functionB - functionA: đối số truyền vào khi gọi functionB (functionA: callbackFunction)
+        functionB(functionA);
+
+        //setTimeout(callbackFunction,time): dùng để dừng chương trình trong 1 thời gian
+        // setTimeout(function () {
+        //     console.log("Dừng lại 3 giây");
+        // }, 3000);
+        // console.log("Kết thúc");
+        //setInterval(callbackFunction,time): Lặp chương trình với chu kỳ time
+        //Bài toán: Đồng hồ đếm giây
+        let cnt = 1;
+        setInterval(function () {
+            console.log(cnt);
+            cnt++;
+        }, 1000);
+
+        //manaplanacanakpanam
+        //manapkanacanalpanam
+
+    </script>
+</body>
+
+</html>
